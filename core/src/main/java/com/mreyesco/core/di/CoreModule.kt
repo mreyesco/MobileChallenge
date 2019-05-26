@@ -1,9 +1,12 @@
-package com.mreyesco.core
+package com.mreyesco.core.di
 
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.mreyesco.core.BuildConfig
+import com.mreyesco.core.networking.ProductsApi
+import com.mreyesco.core.repositories.StoreRepository
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable

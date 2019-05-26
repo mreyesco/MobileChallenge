@@ -1,4 +1,4 @@
-package com.mreyesco.core
+package com.mreyesco.core.networking
 
 import com.google.gson.JsonElement
 import io.reactivex.Observable
