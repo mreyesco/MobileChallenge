@@ -4,4 +4,5 @@ import dagger.Subcomponent
 
 @Subcomponent
 interface StoreComponent {
+    fun inject(factory: StoreViewModelFactory)
 }
