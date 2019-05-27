@@ -1,4 +1,4 @@
-package com.mreyesco.store
+package com.mreyesco.store.viewmodel.mapper
 
 import java.text.NumberFormat
 import java.util.*

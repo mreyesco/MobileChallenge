@@ -1,8 +1,9 @@
-package com.mreyesco.store
+package com.mreyesco.store.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.mreyesco.core.repositories.StoreRepository
+import com.mreyesco.store.di.StoreDependencyManager
 import javax.inject.Inject
 
 class StoreViewModelFactory : ViewModelProvider.Factory {

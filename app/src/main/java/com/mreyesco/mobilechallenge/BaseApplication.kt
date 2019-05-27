@@ -2,7 +2,7 @@ package com.mreyesco.mobilechallenge
 
 import android.app.Application
 import com.mreyesco.core.di.CoreModule
-import com.mreyesco.store.StoreDependencyManager
+import com.mreyesco.store.di.StoreDependencyManager
 
 class BaseApplication : Application() {
     lateinit var component: AppComponent

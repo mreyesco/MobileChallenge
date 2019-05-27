@@ -1,5 +1,6 @@
-package com.mreyesco.store
+package com.mreyesco.store.viewmodel
 
+import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,6 +14,7 @@ class StoreViewModel(private val storeRepository: StoreRepository) : ViewModel()
     private val disposable = CompositeDisposable()
     private val _isLoading = MutableLiveData<Boolean>()
     private val _products = MutableLiveData<List<ProductViewModel>>()
+    val subtotal: ObservableField<String> = ObservableField()
 
     val isLoading: LiveData<Boolean> = _isLoading
     val products: LiveData<List<ProductViewModel>> = _products
@@ -21,6 +23,10 @@ class StoreViewModel(private val storeRepository: StoreRepository) : ViewModel()
         performRequest(storeRepository.getProducts()) { products ->
             _products.postValue(products.map { ProductViewModel(it) })
         }
+    }
+
+    fun goToCheckout(){
+
     }
 
     private fun <T : Any> performRequest(

@@ -1,7 +1,7 @@
 package com.mreyesco.mobilechallenge
 
 import com.mreyesco.core.di.CoreModule
-import com.mreyesco.store.StoreComponent
+import com.mreyesco.store.di.StoreComponent
 import dagger.Component
 import javax.inject.Singleton
 
