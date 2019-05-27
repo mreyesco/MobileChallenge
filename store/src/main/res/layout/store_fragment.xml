@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mreyesco.store.viewmodel.StoreViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerStoreFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonStoreFragmentCheckout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonStoreFragmentCheckout"
+            style="@style/ButtonBlue_14"
+            android:layout_width="@dimen/store_button_width_164"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/all_dimen_16"
+            android:layout_marginBottom="@dimen/all_dimen_16"
+            android:onClick="@{()-> viewModel.goToCheckout()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/textStoreFragmentSubtotalTitle"
+            tools:text="Checkout" />
+
+        <TextView
+            android:id="@+id/textStoreFragmentSubtotalTitle"
+            style="@style/Price_14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/all_dimen_16"
+            android:layout_marginBottom="@dimen/all_dimen_8"
+            app:layout_constraintBottom_toTopOf="@+id/textStoreFragmentSubtotalAmount"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Subtotal" />
+
+        <TextView
+            android:id="@+id/textStoreFragmentSubtotalAmount"
+            style="@style/Title_16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/all_dimen_16"
+            android:text="@{viewModel.subtotal}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textStoreFragmentSubtotalTitle"
+            app:layout_constraintStart_toStartOf="@+id/textStoreFragmentSubtotalTitle"
+            tools:text="15" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
