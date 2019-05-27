@@ -1,5 +1,8 @@
 package com.mreyesco.store.viewmodel
 
+import android.view.View.GONE
+import android.view.View.VISIBLE
+import androidx.databinding.Bindable
 import androidx.databinding.ObservableField
 import androidx.databinding.ObservableInt
 import androidx.lifecycle.ViewModel
@@ -31,11 +34,11 @@ class ProductViewModel() : ViewModel() {
         this.imageUrl.set(getImageUrl(product.code))
     }
 
-    fun addProductToCart(){
+    fun addProductToCart() {
 
     }
 
-    fun removeProductFromCart(){
+    fun removeProductFromCart() {
 
     }
 

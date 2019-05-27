@@ -12,3 +12,8 @@ fun setAmountAdded(view: TextView, amount: Int) {
         visibility = if (amount > 0) View.VISIBLE else View.GONE
     }
 }
+
+@BindingAdapter(value = ["visibility_by_amount"])
+fun setVisibilityByAmount(view: TextView, amount: Int) {
+    view.visibility = if (amount > 0) View.VISIBLE else View.GONE
+}

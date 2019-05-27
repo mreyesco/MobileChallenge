@@ -86,7 +86,7 @@
                 android:layout_marginEnd="@dimen/all_dimen_8"
                 android:onClick="@{()-> viewModel.removeProductFromCart()}"
                 android:padding="@dimen/all_dimen_8"
-                android:visibility="@{viewModel.amount > 0 ? View.VISIBLE : View.GONE}"
+                app:visibility_by_amount="@{viewModel.amount}"
                 app:layout_constraintBottom_toBottomOf="@+id/buttonProductAdd"
                 app:layout_constraintEnd_toStartOf="@+id/buttonProductAdd"
                 app:layout_constraintTop_toTopOf="@+id/buttonProductAdd"
