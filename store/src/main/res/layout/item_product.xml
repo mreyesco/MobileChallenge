@@ -12,6 +12,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
+        android:layout_margin="@dimen/all_dimen_8"
         android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,38 +20,38 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/imageProduct"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/all_dimen_16"
-                android:layout_marginTop="@dimen/all_dimen_16"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/product_placeholder" />
+                    android:id="@+id/imageProduct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/all_dimen_16"
+                    android:layout_marginTop="@dimen/all_dimen_16"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/product_placeholder" android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
 
             <TextView
-                android:id="@+id/textProductName"
-                style="@style/Title_16"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/all_dimen_16"
-                android:layout_marginTop="@dimen/all_dimen_16"
-                android:text="@{viewModel.name}"
-                app:layout_constraintStart_toEndOf="@+id/imageProduct"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Cabify Voucher" />
+                    android:id="@+id/textProductName"
+                    style="@style/Title_16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/all_dimen_16"
+                    android:text="@{viewModel.name}"
+                    app:layout_constraintStart_toEndOf="@+id/imageProduct"
+                    tools:text="Cabify Voucher" app:layout_constraintTop_toTopOf="@+id/imageProduct"/>
 
             <TextView
-                android:id="@+id/textProductAmountAdded"
-                style="@style/Amount_12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingStart="@dimen/all_dimen_8"
-                android:paddingEnd="@dimen/all_dimen_8"
-                app:amount_added="@{viewModel.amount}"
-                app:layout_constraintStart_toStartOf="@+id/textProductName"
-                app:layout_constraintTop_toBottomOf="@+id/textProductName"
-                tools:text="x1" />
+                    android:id="@+id/textProductAmountAdded"
+                    style="@style/Amount_12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/all_dimen_8"
+                    android:paddingEnd="@dimen/all_dimen_8"
+                    app:amountAdded="@{viewModel.amount}"
+                    app:goneUnless="@{viewModel.onCart}"
+                    app:layout_constraintStart_toStartOf="@+id/textProductName"
+                    app:layout_constraintTop_toBottomOf="@+id/textProductName"
+                    tools:text="x1"/>
 
             <TextView
                 android:id="@+id/textProductPrice"
@@ -65,18 +66,16 @@
                 tools:text="5" />
 
             <Button
-                android:id="@+id/buttonProductAdd"
-                style="@style/ButtonBlue_14"
-                android:layout_width="wrap_content"
-                android:layout_height="32dp"
-                android:layout_marginTop="@dimen/all_dimen_16"
-                android:layout_marginEnd="@dimen/all_dimen_16"
-                android:layout_marginBottom="@dimen/all_dimen_16"
-                android:onClick="@{()-> viewModel.addProductToCart()}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Add" />
+                    android:id="@+id/buttonProductAdd"
+                    style="@style/ButtonBlue_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="@dimen/all_dimen_16"
+                    android:onClick="@{()-> viewModel.addProductToCart()}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:text="@string/product_add"
+                    app:layout_constraintTop_toTopOf="@+id/imageProduct"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageProduct"/>
 
             <TextView
                 android:id="@+id/textProductRemove"
@@ -86,11 +85,11 @@
                 android:layout_marginEnd="@dimen/all_dimen_8"
                 android:onClick="@{()-> viewModel.removeProductFromCart()}"
                 android:padding="@dimen/all_dimen_8"
-                app:visibility_by_amount="@{viewModel.amount}"
+                app:goneUnless="@{viewModel.onCart}"
                 app:layout_constraintBottom_toBottomOf="@+id/buttonProductAdd"
                 app:layout_constraintEnd_toStartOf="@+id/buttonProductAdd"
                 app:layout_constraintTop_toTopOf="@+id/buttonProductAdd"
-                tools:text="Remove" />
+                android:text="@string/product_remove" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </layout>

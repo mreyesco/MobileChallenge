@@ -12,8 +12,9 @@ class StoreRepository(private val productsApi: ProductsApi) {
     fun getProducts(): Observable<List<ProductModelInterface>> {
         return productsApi.getProducts()
             .map {
+                val productsJson = it.asJsonObject["products"]
                 val type = object : TypeToken<List<ProductModel>>() {}.type
-                Gson().fromJson<List<ProductModel>>(it, type)
+                Gson().fromJson<List<ProductModel>>(productsJson, type)
             }
     }
 }

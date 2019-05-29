@@ -15,17 +15,17 @@
         android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerStoreFragment"
+            android:id="@+id/recyclerStoreProducts"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/buttonStoreFragmentCheckout"
+            app:layout_constraintBottom_toTopOf="@+id/buttonStoreCheckout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/buttonStoreFragmentCheckout"
+            android:id="@+id/buttonStoreCheckout"
             style="@style/ButtonBlue_14"
             android:layout_width="@dimen/store_button_width_164"
             android:layout_height="wrap_content"
@@ -35,30 +35,30 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/textStoreFragmentSubtotalTitle"
+            app:layout_constraintStart_toEndOf="@+id/textStoreSubtotalTitle"
             tools:text="Checkout" />
 
         <TextView
-            android:id="@+id/textStoreFragmentSubtotalTitle"
+            android:id="@+id/textStoreSubtotalTitle"
             style="@style/Price_14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/all_dimen_16"
             android:layout_marginBottom="@dimen/all_dimen_8"
-            app:layout_constraintBottom_toTopOf="@+id/textStoreFragmentSubtotalAmount"
+            app:layout_constraintBottom_toTopOf="@+id/textStoreSubtotalAmount"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="Subtotal" />
 
         <TextView
-            android:id="@+id/textStoreFragmentSubtotalAmount"
+            android:id="@+id/textStoreSubtotalAmount"
             style="@style/Title_16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/all_dimen_16"
             android:text="@{viewModel.subtotal}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/textStoreFragmentSubtotalTitle"
-            app:layout_constraintStart_toStartOf="@+id/textStoreFragmentSubtotalTitle"
+            app:layout_constraintEnd_toEndOf="@+id/textStoreSubtotalTitle"
+            app:layout_constraintStart_toStartOf="@+id/textStoreSubtotalTitle"
             tools:text="15" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

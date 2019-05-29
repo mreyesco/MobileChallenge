@@ -1,8 +1,6 @@
 package com.mreyesco.store.viewmodel
 
-import android.view.View.GONE
-import android.view.View.VISIBLE
-import androidx.databinding.Bindable
+import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.databinding.ObservableInt
 import androidx.lifecycle.ViewModel
@@ -19,11 +17,12 @@ class ProductViewModel() : ViewModel() {
     val price: ObservableField<String> = ObservableField()
     val amount: ObservableInt = ObservableInt()
     val imageUrl: ObservableField<String> = ObservableField()
+    val onCart: ObservableBoolean = ObservableBoolean()
 
     init {
-        val fields = arrayOf(name, price, imageUrl)
-        fields.forEach { it.set("") }
+        arrayOf(name, price, imageUrl).forEach { it.set("") }
         amount.set(0)
+        onCart.set(false)
     }
 
     constructor(product: ProductModelInterface) : this() {
@@ -35,11 +34,11 @@ class ProductViewModel() : ViewModel() {
     }
 
     fun addProductToCart() {
-
+        onCart.set(true)
     }
 
     fun removeProductFromCart() {
-
+        onCart.set(false)
     }
 
     private fun getImageUrl(code: String): String {
