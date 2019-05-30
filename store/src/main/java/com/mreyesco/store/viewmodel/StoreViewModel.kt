@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mreyesco.core.repositories.StoreRepository
+import com.mreyesco.store.viewmodel.mapper.CurrencyMapper
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -19,14 +20,56 @@ class StoreViewModel(private val storeRepository: StoreRepository) : ViewModel()
     val isLoading: LiveData<Boolean> = _isLoading
     val products: LiveData<List<ProductViewModel>> = _products
 
+    init {
+        subtotal.set(CurrencyMapper.getFormattedCurrency(0.0))
+    }
+
     fun getProducts() {
         performRequest(storeRepository.getProducts()) { products ->
-            _products.postValue(products.map { ProductViewModel(it) })
+            _products.postValue(products.map {
+                ProductViewModel(it) {
+                    calculateSubtotal()
+                }
+            })
         }
     }
 
-    fun goToCheckout(){
+    fun goToCheckout() {
 
+    }
+
+    private fun calculateSubtotal() {
+        _products.value?.let { products ->
+            if (products.isNotEmpty()) {
+                val totals = arrayListOf<Double>()
+                val promo = hashMapOf<String, Int>()
+                products.forEach {
+                    val amount = it.amount.get()
+                    if (amount > 0) {
+                        promo[it.code] = amount
+                    }
+                }
+                promo.keys.forEach { code ->
+                    val totalByItem = promo[code] ?: 0
+                    if (totalByItem >= 3 && code == CODE_TSHIRT) {
+                        totals.add(totalByItem * 19.0)
+                    } else {
+                        val item = products.find { it.code == code }
+                        item?.let {
+                            val value = if (totalByItem > 1) {
+                                if (totalByItem % 2 == 0) it.rawPrice * (totalByItem / 2)
+                                else it.rawPrice + (it.rawPrice * ((totalByItem - 1) / 2))
+                            } else (it.rawPrice * totalByItem)
+                            totals.add(value)
+                        }
+
+                    }
+                }
+                val subtotalValue = if (totals.isNotEmpty()) totals.reduce { total, x -> total + x }
+                else 0.0
+                subtotal.set(CurrencyMapper.getFormattedCurrency(subtotalValue))
+            }
+        }
     }
 
     private fun <T : Any> performRequest(

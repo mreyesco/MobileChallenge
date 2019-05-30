@@ -3,4 +3,6 @@
     <string name="product_amount_added">X%1$d</string>
     <string name="product_add">Add</string>
     <string name="product_remove">Remove</string>
+    <string name="store_subtotal">Subtotal</string>
+    <string name="store_checkout">Checkout</string>
 </resources>
