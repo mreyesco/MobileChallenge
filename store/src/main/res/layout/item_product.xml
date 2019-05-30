@@ -27,6 +27,7 @@
                     android:layout_marginTop="@dimen/all_dimen_16"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:loadImage="@{viewModel.imageUrl}"
                     app:srcCompat="@drawable/product_placeholder" android:layout_marginBottom="16dp"
                     app:layout_constraintBottom_toBottomOf="parent"/>
 
