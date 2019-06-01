@@ -4,5 +4,6 @@
     <color name="dove_gray">#737373</color>
     <color name="white">#ffffff</color>
     <color name="sky_blue">#5c9efa</color>
+    <color name="sky_blue_dark">#0870c7</color>
     <color name="flory">#F66669</color>
 </resources>

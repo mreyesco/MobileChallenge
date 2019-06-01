@@ -13,15 +13,21 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.mreyesco.store.R
 import com.mreyesco.store.databinding.FragmentStoreBinding
 import com.mreyesco.store.view.ProductsAdapter
+import com.mreyesco.store.view.activities.ActivityCallback
 import com.mreyesco.store.viewmodel.StoreViewModel
 import com.mreyesco.store.viewmodel.StoreViewModelFactory
 import kotlinx.android.synthetic.main.fragment_store.*
 
 class StoreFragment : Fragment() {
+    private lateinit var activityCallback: ActivityCallback
     private lateinit var storeViewModel: StoreViewModel
-
     override fun onAttach(context: Context?) {
         super.onAttach(context)
+        try {
+            activityCallback = context as ActivityCallback
+        } catch (exception: ClassCastException) {
+            throw IllegalArgumentException(context.toString() + " must implement " + ActivityCallback::class.java.simpleName)
+        }
         activity?.let {
             storeViewModel = ViewModelProviders.of(it, StoreViewModelFactory()).get(StoreViewModel::class.java)
         }
@@ -56,6 +62,11 @@ class StoreFragment : Fragment() {
                     val productsAdapter = adapter as ProductsAdapter
                     productsAdapter.setItems(it)
                 }
+            }
+        })
+        storeViewModel.isLoading.observe(viewLifecycleOwner, Observer { isLoading ->
+            isLoading?.let {
+                activityCallback.switchLoadingDialog(it)
             }
         })
     }
